@@ -36,22 +36,456 @@
     </nav>
   </header>
 
-  <main style="padding-top: 140px; max-width: 1400px; margin: 0 auto; padding-left: 8vw; padding-right: 8vw; padding-bottom: 100px;">
-    <div class="section-top"><span></span><p>OUR HERITAGE</p></div>
-    <h1 style="font-family: 'Maname', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 800; margin-bottom: 30px;">Design, craft & the <em>daily ritual.</em></h1>
-    <p style="font-size: 1.2rem; color: #5e5a53; max-width: 650px; margin-bottom: 60px;">We believe a coffee machine should do more than brew a cup. It should anchor your routine, look right in the room, and honor the bean with absolute precision.</p>
+  
+<!-- Replace the existing <main> content in about.html with this.
+     Add the CSS below inside the page's existing <head>. -->
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 80px;">
+<style>
+:root {
+  --gold: #e1ba66;
+  --ink: #24221f;
+  --muted: #706b63;
+  --cream: #f6f2e9;
+  --paper: #fbfaf7;
+}
+
+.about-main { background: var(--paper); color: var(--ink); }
+.about-wrap { width: min(1180px, 84%); margin: auto; }
+
+.about-kicker {
+  color: #98743a;
+  font: 800 .7rem Poppins, sans-serif;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.about-title {
+  font: 600 clamp(3rem, 6vw, 5.5rem)/.98
+  "Cormorant Garamond", serif;
+  letter-spacing: -.03em;
+}
+
+.about-title em { color: #98743a; }
+
+.about-lead {
+  color: var(--muted);
+  font: 400 1rem/1.9 Manrope, sans-serif;
+  max-width: 620px;
+}
+
+.about-hero { padding: 160px 0 90px; }
+
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 65px;
+  align-items: center;
+}
+
+.about-hero-image {
+  width: 100%;
+  height: 470px;
+  object-fit: cover;
+}
+
+.about-btn {
+  display: inline-block;
+  padding: 16px 24px;
+  background: var(--ink);
+  color: white;
+  text-decoration: none;
+  font: 700 .75rem Manrope, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-top: 24px;
+}
+
+.about-btn:hover { background: #98743a; }
+
+.about-intro {
+  padding: 100px 0;
+  background: var(--cream);
+}
+
+.about-intro-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 70px;
+}
+
+.about-intro h2,
+.about-section-title {
+  font: 600 clamp(2.5rem, 4vw, 4rem)/1
+  "Poppins", serif;
+}
+
+.about-intro p,
+.about-service p,
+.about-value p,
+.about-purpose p {
+  color: var(--muted);
+  font: 400 .9rem/1.9 Poppins, sans-serif;
+}
+
+.about-stat {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.about-stat strong {
+  font: 800 3rem Poppins, sans-serif;
+  color: #98743a;
+}
+
+.about-stat span {
+  font: 700 .7rem Poppins, sans-serif;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.about-services { padding: 110px 0; }
+
+.about-service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 45px;
+}
+
+.about-service {
+  background: white;
+  border: 1px solid rgba(0,0,0,.1);
+  padding: 32px;
+  transition: .3s;
+}
+
+.about-service:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0,0,0,.07);
+}
+
+.about-service i {
+  font-size: 25px;
+  color: #98743a;
+  margin-bottom: 25px;
+}
+
+.about-service h3 {
+  font: 700 1rem Syne, sans-serif;
+}
+
+.about-why {
+  background: #292722;
+  color: white;
+  padding: 100px 0;
+}
+
+.about-why-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 70px;
+}
+
+.about-why h2 {
+  font: 600 clamp(2.5rem, 4vw, 4rem)/1
+  "Cormorant Garamond", serif;
+}
+
+.about-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+}
+
+.about-value {
+  border-top: 1px solid rgba(255,255,255,.25);
+  padding-top: 20px;
+}
+
+.about-value h3 {
+  font: 700 1rem Syne, sans-serif;
+}
+
+.about-value p { color: #c5c0b7; }
+
+.about-purpose { padding: 100px 0; }
+
+.about-purpose-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.about-purpose-card {
+  padding: 45px;
+  background: var(--cream);
+}
+
+.about-purpose-card:nth-child(2) {
+  background: #eee7d9;
+}
+
+.about-purpose-card h2 {
+  font: 600 2.5rem/1.05 "Cormorant Garamond", serif;
+}
+
+.about-cta {
+  padding: 90px 20px;
+  text-align: center;
+  background: #e9dfcd;
+}
+
+.about-cta h2 {
+  font: 600 clamp(2.8rem, 5vw, 4.5rem)/1
+  "Cormorant Garamond", serif;
+}
+
+.about-cta p {
+  max-width: 650px;
+  margin: auto;
+  color: var(--muted);
+  font: 400 .9rem/1.9 Manrope, sans-serif;
+}
+
+@media(max-width:850px) {
+  .about-hero-grid,
+  .about-intro-grid,
+  .about-why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-service-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media(max-width:600px) {
+  .about-wrap { width: 90%; }
+  .about-hero { padding-top: 125px; }
+  .about-hero-image { height: 300px; }
+  .about-service-grid,
+  .about-values,
+  .about-purpose-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-intro,
+  .about-services,
+  .about-purpose { padding: 70px 0; }
+  .about-purpose-card { padding: 30px; }
+}
+</style>
+
+<main class="about-main">
+
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="about-wrap about-hero-grid">
       <div>
-        <h2 style="font-family: 'Syne', sans-serif; font-size: 2.2rem; margin-bottom: 20px;">Built for the moment</h2>
-        <p style="color: #5e5a53; font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px;">Founded on the principle of quiet luxury, RoyalCafe brings professional Italian-grade extraction performance into refined residential and commercial spaces across India.</p>
-        <p style="color: #5e5a53; font-size: 1.05rem; line-height: 1.7;">From morning espresso rituals to high-volume corporate environments, our systems are engineered for uncompromising reliability and timeless aesthetic balance.</p>
+        <span class="about-kicker">About Royal Cafe · Our Story</span>
+        <h1 class="about-title">
+          Your workplace.<br>
+          <em>Better refreshed.</em>
+        </h1>
+        <p class="about-lead">
+          Complete workplace coffee, pantry and refreshment
+          solutions designed to make every workday more convenient.
+        </p>
+        <a class="about-btn" href="services.html">
+          Explore Our Services ↗
+        </a>
       </div>
+
+      <img
+        class="about-hero-image"
+        src="assets/images/RoyalCfe-17-9-26-00015_1-copy.jpg"
+        alt="Royal Cafe workplace coffee and refreshment setup"
+        width="900"
+        height="1000"
+        fetchpriority="high">
+    </div>
+  </section>
+
+  <!-- WHO WE ARE -->
+  <section class="about-intro">
+    <div class="about-wrap about-intro-grid">
       <div>
-        <img src="assets/images/RoyalCfe-17-9-26-00015_1-copy.jpg" alt="RoyalCafe Heritage" style="border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.15);">
+        <span class="about-kicker">Who We Are</span>
+        <h2>
+          More than coffee.<br>
+          <em>A complete workplace solution.</em>
+        </h2>
+      </div>
+
+      <div>
+        <p>
+          Royal Cafe provides integrated workplace refreshment and
+          pantry management solutions for corporate offices,
+          industries, institutions and commercial establishments.
+        </p>
+
+        <p>
+          From professional coffee vending machines and quality
+          beverage products to everyday pantry essentials and fresh
+          fruit supplies, we bring the products and services
+          businesses need to create convenient, well-equipped
+          workplace environments.
+        </p>
+
+        <p>
+          With a focus on product quality, dependable service and
+          customer satisfaction, we work to make workplace
+          refreshment simpler, more reliable and easier to manage.
+        </p>
+
+        <div class="about-stat">
+          <strong>5+</strong>
+          <span>Years of Industry Experience</span>
+        </div>
       </div>
     </div>
-  </main>
+  </section>
+
+  <!-- CORE SERVICES -->
+  <section class="about-services">
+    <div class="about-wrap">
+      <span class="about-kicker">What We Do</span>
+      <h2 class="about-section-title">
+        Everything your workplace needs.<br>
+        <em>One reliable partner.</em>
+      </h2>
+
+      <div class="about-service-grid">
+
+        <article class="about-service">
+          <i class="fa-solid fa-mug-hot"></i>
+          <h3>Coffee Machine Solutions</h3>
+          <p>
+            Supply, installation, maintenance and servicing of
+            coffee vending machines for workplace environments.
+          </p>
+        </article>
+
+        <article class="about-service">
+          <i class="fa-solid fa-mug-saucer"></i>
+          <h3>Coffee &amp; Tea Products</h3>
+          <p>
+            Quality coffee, tea and beverage products to support
+            everyday workplace refreshment.
+          </p>
+        </article>
+
+        <article class="about-service">
+          <i class="fa-solid fa-box-open"></i>
+          <h3>Pantry Materials</h3>
+          <p>
+            A complete range of pantry essentials, snacks,
+            consumables and everyday workplace supplies.
+          </p>
+        </article>
+
+        <article class="about-service">
+          <i class="fa-solid fa-apple-whole"></i>
+          <h3>Fresh Fruits Supply</h3>
+          <p>
+            Fresh fruit sourcing and supply based on the
+            requirements of offices and organizations.
+          </p>
+        </article>
+
+        <article class="about-service">
+          <i class="fa-solid fa-headset"></i>
+          <h3>Dedicated Service Support</h3>
+          <p>
+            Ongoing assistance, timely replenishment and customer
+            support to help workplaces run smoothly.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ROYAL CAFE -->
+  <section class="about-why">
+    <div class="about-wrap about-why-grid">
+      <div>
+        <span class="about-kicker">Why Royal Cafe</span>
+        <h2>The difference<br>is in the details.</h2>
+        <p class="about-value">
+          We focus on the everyday details that make workplace
+          refreshment dependable, convenient and easier to manage.
+        </p>
+      </div>
+
+      <div class="about-values">
+        <article class="about-value">
+          <h3>Quality First</h3>
+          <p>A consistent focus on product quality and dependable supplies.</p>
+        </article>
+
+        <article class="about-value">
+          <h3>Reliable Service</h3>
+          <p>Professional support and timely assistance for workplace needs.</p>
+        </article>
+
+        <article class="about-value">
+          <h3>Flexible Solutions</h3>
+          <p>Services shaped around individual workplace requirements.</p>
+        </article>
+
+        <article class="about-value">
+          <h3>Long-Term Partnerships</h3>
+          <p>Building lasting relationships through consistent service and customer care.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION & MISSION -->
+  <section class="about-purpose">
+    <div class="about-wrap about-purpose-grid">
+
+      <article class="about-purpose-card">
+        <span class="about-kicker">Our Vision</span>
+        <h2>Setting a better standard for workplace refreshment.</h2>
+        <p>
+          To become a trusted and preferred partner for complete
+          workplace coffee, pantry and refreshment solutions.
+        </p>
+      </article>
+
+      <article class="about-purpose-card">
+        <span class="about-kicker">Our Mission</span>
+        <h2>Making everyday workplace experiences better.</h2>
+        <p>
+          To deliver quality products and dependable services
+          while ensuring customer satisfaction, convenience and
+          long-term business relationships.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="about-cta">
+    <div class="about-wrap">
+      <span class="about-kicker">Let's Work Together</span>
+      <h2>Let's build a better workplace experience.</h2>
+      <p>
+        Whether your business needs coffee vending machines,
+        pantry supplies, beverage products or fresh fruit
+        deliveries, Royal Cafe is ready to understand your
+        requirements.
+      </p>
+      <a class="about-btn" href="contact.html">
+        Discuss Your Requirements ↗
+      </a>
+    </div>
+  </section>
+
+</main>
+
 
   <!-- Footer -->
   <footer class="site-footer">
